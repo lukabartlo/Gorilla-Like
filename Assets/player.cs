@@ -8,8 +8,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private Rigidbody2D CC;
     private bool OnGround = false;
+    private Vector2 _mousepos = Vector2.zero;
 
-    [SerializeField] private InputActionReference Left, Right, Up, Shoot;
+    [SerializeField] private InputActionReference Left, Right, Up, Shoot ,mousePos;
     [SerializeField] private GameObject Projectile;
 
     void Start()
@@ -22,19 +23,19 @@ public class Player : MonoBehaviour
     {
         if (Left.action.inProgress)
         {
-            CC.velocity = new Vector2(-10, CC.velocity.y);
+            CC.velocity = new Vector2(-5, CC.velocity.y);
         }
         if (Right.action.inProgress)
         {
-            CC.velocity = new Vector2(10, CC.velocity.y);
+            CC.velocity = new Vector2(5, CC.velocity.y);
         }
         if (OnGround == true && Up.action.inProgress)
         { 
-            CC.velocity = new Vector2(CC.velocity.x, 20);
+            CC.velocity = new Vector2(CC.velocity.x, 15);
         }
         if (Shoot.action.inProgress)
         {
-            GameObject newproj = Instantiate(Projectile);
+            GameObject newproj = Instantiate(Projectile, transform.position, transform.rotation);
         }
         CC.velocity -= new Vector2(0.5f * CC.velocity.normalized.x, 0);
     }
@@ -48,4 +49,11 @@ public class Player : MonoBehaviour
     {
         OnGround = false;
     }
-}
+
+    public void GetMousePos(InputAction.CallbackContext context) 
+    { 
+        _mousepos = context.ReadValue<Vector2>();
+        _mousepos = Camera.main.ScreenToWorldPoint(_mousepos);
+    }
+
+} 

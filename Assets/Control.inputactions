@@ -2,7 +2,7 @@
     "name": "Control",
     "maps": [
         {
-            "name": "New action map",
+            "name": "Control",
             "id": "25bc72ef-517e-4212-a2c1-d03d29aeb68f",
             "actions": [
                 {
@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "mousePos",
+                    "type": "Value",
+                    "id": "42de5206-3a77-4694-b23b-5beffa425149",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -84,6 +93,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6a6ea0a-ea88-4dfe-8ef3-b65597eb6cea",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "mousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
