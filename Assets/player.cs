@@ -33,10 +33,6 @@ public class Player : MonoBehaviour
         { 
             CC.velocity = new Vector2(CC.velocity.x, 15);
         }
-        if (Shoot.action.inProgress)
-        {
-            GameObject newproj = Instantiate(Projectile, transform.position, transform.rotation);
-        }
         CC.velocity -= new Vector2(0.5f * CC.velocity.normalized.x, 0);
     }
 
@@ -56,4 +52,17 @@ public class Player : MonoBehaviour
         _mousepos = Camera.main.ScreenToWorldPoint(_mousepos);
     }
 
+    public void ShootFunc (InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Vector2 PlayerPos = (Vector2)GetComponent<Transform>().position;
+            Vector2 ShootVector = _mousepos - PlayerPos;
+            GameObject NewProjectile;
+            if (_mousepos.x >= PlayerPos.x) { NewProjectile = Instantiate(Projectile, transform.position + new Vector3 (1,0,0), transform.rotation); }
+            else { NewProjectile = Instantiate(Projectile, transform.position + new Vector3(-1, 0, 0), transform.rotation); }
+
+            NewProjectile.GetComponent<banana>().SetAngle(ShootVector.normalized, 25);
+        }
+    }
 } 
