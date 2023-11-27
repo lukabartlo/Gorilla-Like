@@ -8,15 +8,41 @@ public class Terrain2 : MonoBehaviour
     [SerializeField] int minHeight, maxHeight;
     [SerializeField] int repeatNum;
     [SerializeField] GameObject Dirt, Grass;
+
     void Start()
     {
+        PreGeneration();
         Generation();
+        PostGeneration();
+    }
+
+    void PreGeneration()
+    {
+        int x = -26 - 16;
+        height = maxHeight + 30;
+        while (x < -26)
+        {
+            GenerateFlatPlatform(x);
+            x++;
+        }
+    }
+
+    void PostGeneration()
+    {
+        int x = width;
+        height = maxHeight + 30;
+        while (x < width + 16)
+        {
+            GenerateFlatPlatform(x);
+            x++;
+        }
+
     }
 
     void Generation()
     {
         int repeatValue = 0;
-        for (int x = -25; x < width; x++)        //spawn tile on X axis
+        for (int x = -26; x < width; x++)        //spawn tile on X axis
         {
             if (repeatValue == 0)
             {
