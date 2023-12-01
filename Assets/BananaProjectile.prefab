@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1191664351546833764}
   - component: {fileID: 7333030318139254629}
   m_Layer: 0
-  m_Name: Projectile
-  m_TagString: Untagged
+  m_Name: BananaProjectile
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,10 +109,10 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!58 &1191664351546833764
 CircleCollider2D:
@@ -129,7 +129,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -161,3 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bafe302e5c62d4ba5126518a90f735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameEvent: {fileID: 0}
+  player: {fileID: 0}
+  Enemy: {fileID: 0}
